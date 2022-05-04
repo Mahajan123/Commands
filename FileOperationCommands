@@ -1,0 +1,23 @@
+Find all files whose size is greater than 1 GB 
+    find ./ -type f -size +1G -exec ls -lrth {} \; 
+
+Find all files with specified name and update timestamp 
+    find ./ -maxdepth 1 -name "<FileName>*" -exec touch {} \; 
+
+Find all files which were created between the last 2 days and 4 days 
+  	find ./ -maxdepth 1 -type f -mtime +<Day> -mtime -<Day> -exec ls -lrth {} \; 
+
+Find all files with specified names and delete all of them. 
+    find ./ -maxdepth 1 -name "<FileName>*" -exec rm -rf {} \; 
+
+Find all files with specified names and print the addition of those file sizes. 
+    find ./ -maxdepth 1 -type f -name "<FileName>*" -ls | awk '{total += $1} END {print (total/1000000), "MB"}' 
+
+Find all files except the specified name and check for specific word presence in those files 
+    find ./ -maxdepth 1 -type f -not -name "<FileName>*" -not -name "<FileName>*" -exec grep "<Word that wants to search>" {} \;	 
+
+Fetch count of all files having common first N characters as a prefix in file name 
+    ls | cut -c 1-N | uniq -c 
+
+Move files with specific name from current directory to another directory 
+    find path_A -maxdepth 1 -name "<FileName>*" -exec mv {} path_B \;  
