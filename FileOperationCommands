@@ -26,4 +26,4 @@
     find ./ -type f  -mmin +<minute>  -mmin -<minute>  -exec du -ch {} + | grep total$
    
 10. Find files with specific name and compress them.
-    find ./ -maxdepth 1 -name "out_*" -exec gzip {} \;
+    find ./ -maxdepth 1 -name "<FileName>*" -exec gzip {} \;
