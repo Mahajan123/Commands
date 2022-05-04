@@ -1,29 +1,39 @@
-1.Find all files whose size is greater than  'G'-Gigabytes /'c'-Bytes/'k'-Kilobytes/'M'-Megabytes
-    find ./ -type f -size +<size>G -exec ls -lrth {} \; 
+1. Find all files whose size is greater than 'G'-Gigabytes /'c'-Bytes/'k'-Kilobytes/'M'-Megabytes. 
 
-2.Find all files with specified name and update timestamp 
-    find ./ -maxdepth 1 -name "<FileName>*" -exec touch {} \; 
+    find PATH_A -maxdepth 1 -type f -size +<size>G -exec ls -lrth {} \;  
 
-3.Find all files which were created between the last metinoned days 
-    find ./ -maxdepth 1 -type f -mtime +<Day> -mtime -<Day> -exec ls -lrth {} \; 
+2. Find all files with specified names and update timestamp. 
 
-4.Find all files with specified names and delete all of them. 
-    find ./ -maxdepth 1 -name "<FileName>*" -exec rm -rf {} \; 
+    find PATH_A -maxdepth 1 -type f -name "<File Name>*" -exec touch {} \;   
 
-5.Find all files with specified names and print the addition of those file sizes. 
-    find ./ -maxdepth 1 -type f -name "<FileName>*" -ls | awk '{total += $1} END {print (total/1000000), "MB"}' 
+3. Find all files which were created between the mentioned days. 
 
-6.Find all files except the specified name and check for specific word presence in those files 
-    find ./ -maxdepth 1 -type f -not -name "<FileName>*" -not -name "<FileName>*" -exec grep "<Word that wants to search>" {} \;	 
+    find PATH_A -maxdepth 1 -type f -mtime +<Day> -mtime -<Day> -exec ls -lrth {} \;   
 
-7.Fetch count of all files having common first N characters as a prefix in file name 
-    ls | cut -c 1-N | uniq -c 
+4. Find all files with specified names and delete all of them.  
 
-8.Move files with specific name from current directory to another directory 
-    find path_A -maxdepth 1 -name "<FileName>*" -exec mv {} path_B \; 
+    find PATH_A -maxdepth 1 -name "<File Name>*" -exec rm -rf {} \;   
 
-9.Fetch total file size which are created during metioned minutes. 
-    find ./ -type f  -mmin +<minute>  -mmin -<minute>  -exec du -ch {} + | grep total$
-   
-10. Find files with specific name and compress them.
-    find ./ -maxdepth 1 -name "<FileName>*" -exec gzip {} \;
+5. Find all files with specified names and print the addition of those file sizes.  
+
+    find PATH_A -maxdepth 1 -type f -name "<File Name>*" -ls | awk '{total += $1} END {print (total/1000000), "MB"}'  
+
+6. Find all files except the specified name and check for specific word presence in those files.  
+
+    find PATH_A -maxdepth 1 -type f -not -name "<File Name>*" -name "<File Name>*" -exec grep "<Word that wants to search>" {} \;   
+
+7. Fetch count of all files having common first N characters as a prefix in file name. 
+
+    ls | cut -c 1-N | uniq -c   
+
+8. Move files with specific name from current directory to another directory. 
+
+    find PATH_A -maxdepth 1 -type f -name "<File Name>*" -exec mv {} PATH_B \;  
+
+9. Fetch total of all file sizes which are created during mentioned minutes.  
+
+    find PATH_A -maxdepth 1 -type f -mmin +<minute>  -mmin -<minute> -exec du -ch {} + | grep total$ 
+
+10. Find files with specific names and compress them. 
+
+    find PATH_A -maxdepth 1 -name "<File Name>*" -exec gzip {} \; 
