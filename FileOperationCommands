@@ -5,7 +5,7 @@
     find ./ -maxdepth 1 -name "<FileName>*" -exec touch {} \; 
 
 3.Find all files which were created between the last metinoned days 
-  	find ./ -maxdepth 1 -type f -mtime +<Day> -mtime -<Day> -exec ls -lrth {} \; 
+    find ./ -maxdepth 1 -type f -mtime +<Day> -mtime -<Day> -exec ls -lrth {} \; 
 
 4.Find all files with specified names and delete all of them. 
     find ./ -maxdepth 1 -name "<FileName>*" -exec rm -rf {} \; 
