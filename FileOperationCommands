@@ -1,10 +1,10 @@
-1.Find all files whose size is greater than 1 GB 
-    find ./ -type f -size +1G -exec ls -lrth {} \; 
+1.Find all files whose size is greater than  'G'-Gigabytes /'c'-Bytes/'k'-Kilobytes/'M'-Megabytes
+    find ./ -type f -size +<size>G -exec ls -lrth {} \; 
 
 2.Find all files with specified name and update timestamp 
     find ./ -maxdepth 1 -name "<FileName>*" -exec touch {} \; 
 
-3.Find all files which were created between the last 2 days and 4 days 
+3.Find all files which were created between the last metinoned days 
   	find ./ -maxdepth 1 -type f -mtime +<Day> -mtime -<Day> -exec ls -lrth {} \; 
 
 4.Find all files with specified names and delete all of them. 
@@ -20,4 +20,7 @@
     ls | cut -c 1-N | uniq -c 
 
 8.Move files with specific name from current directory to another directory 
-    find path_A -maxdepth 1 -name "<FileName>*" -exec mv {} path_B \;  
+    find path_A -maxdepth 1 -name "<FileName>*" -exec mv {} path_B \; 
+
+9.Fetch total file size which are created during metioned minutes. 
+   find ./ -type f  -mmin +<minute>  -mmin -<minute>  -exec du -ch {} + | grep total$
