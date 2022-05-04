@@ -23,4 +23,7 @@
     find path_A -maxdepth 1 -name "<FileName>*" -exec mv {} path_B \; 
 
 9.Fetch total file size which are created during metioned minutes. 
-   find ./ -type f  -mmin +<minute>  -mmin -<minute>  -exec du -ch {} + | grep total$
+    find ./ -type f  -mmin +<minute>  -mmin -<minute>  -exec du -ch {} + | grep total$
+   
+10. Find files with specific name and compress them.
+    find ./ -maxdepth 1 -name "out_*" -exec gzip {} \;
